@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="MaimeGui.Views.RepairView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MaimeGui.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <TextBlock FontSize="14">ETL Jobs</TextBlock>
+            <Separator/>
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ItemsControl ItemsSource="{Binding Graphs}" Margin="10,0,5,0">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="0,0,0,5" Orientation="Horizontal">
+                                <BulletDecorator>
+                                    <BulletDecorator.Bullet>
+                                        <Ellipse Height="10" Width="10" Fill="Black"/>
+                                    </BulletDecorator.Bullet>
+                                    <TextBlock Text="{Binding Path=Name}" Margin="5,0,0,0"/>
+                                </BulletDecorator>
+                                <ProgressBar Width="100" Value="{Binding Path=Status}" Foreground="{Binding Path=Color}" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Grid.Column="0">
+            <Button Width="75" Command="{Binding OnJobStart}">Start repair</Button>
+            <Button Width="100" Command="{Binding OnCreateSnapshot}" Margin="10,0,0,0">Create snapshot</Button>
+        </StackPanel>
+
+        <!--Column 1-->
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding LogMessages}" Margin="10,0,5,0">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding Path=Time, StringFormat=[{0:HH:mm:ss}]}" FontFamily="Consolas" TextWrapping="WrapWithOverflow"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Path=Level, StringFormat=[{0}]}" FontFamily="Consolas" TextWrapping="WrapWithOverflow"/>
+                            <TextBlock Grid.Column="2" Text="{Binding Path=Message}" Foreground="{Binding Path=Color}" FontFamily="Consolas" TextWrapping="WrapWithOverflow"/>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

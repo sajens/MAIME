@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph GraphDirection="TopToBottom" Layout="Sugiyama" ZoomLevel="-1" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="Aggregate" Bounds="68.7766666666666,359.6,75.8399999999999,25.96" ComponentClass="Aggregate" Label="Aggregate" />
+    <Node Id="Conditional Split" Bounds="182.885,287.68,107.623333333333,25.96" ComponentClass="Conditional Split" Label="Conditional Split" />
+    <Node Id="Derived Column" Bounds="183.981666666667,215.76,105.43,25.96" ComponentClass="Derived Column" Label="Derived Column" />
+    <Node Id="Lookup" Bounds="206.938333333333,71.9200000000001,59.5166666666667,25.96" ComponentClass="Lookup" Label="Lookup" />
+    <Node Id="OLE DB Destination" Bounds="175.156666666667,359.6,123.08,25.96" ComponentClass="OLE DB Destination" Label="OLE DB Destination" />
+    <Node Id="OLE DB Destination 1" Bounds="40.2783333333334,431.52,132.836666666667,25.96" ComponentClass="OLE DB Destination" Label="OLE DB Destination 1" />
+    <Node Id="OLE DB Source" Bounds="187.286666666667,-1.77635683940025E-15,98.82,25.96" ComponentClass="OLE DB Source" Label="OLE DB Source" />
+    <Node Id="Sort" Bounds="211.696666666667,143.84,50,25.96" ComponentClass="Sort" Label="Sort" />
+  </Nodes>
+  <Links>
+    <Link Source="Aggregate" Target="OLE DB Destination 1" Bounds="106.696662902832,385.559997558594,0,36.9599914550781" Label="Aggregate Output 1" LabelBounds="0,400.56,106.696666666667,15.96" />
+    <Link Source="Conditional Split" Target="Aggregate" Bounds="129.125915527344,313.640014648438,76.1675262451172,40.1912841796875" Label="40 Age +" LabelBounds="100.89,328.64,48.8066666666666,15.96" />
+    <Link Source="Conditional Split" Target="OLE DB Destination" Bounds="236.696670532227,313.640014648438,0,36.9599914550781" Label="20 Age +" LabelBounds="187.89,328.64,48.8066666666666,15.96" />
+    <Link Source="Derived Column" Target="Conditional Split" Bounds="236.696670532227,241.720001220703,0,36.9599914550781" Label="Derived Column Output" LabelBounds="110.166666666667,256.72,126.53,15.96" />
+    <Link Source="Lookup" Target="Sort" Bounds="236.696670532227,97.879997253418,0,36.9599990844727" Label="Lookup Match Output" LabelBounds="119.51,112.88,117.186666666666,15.96" />
+    <Link Source="OLE DB Source" Target="Lookup" Bounds="236.696670532227,25.9599990844727,0,36.9599990844727" Label="OLE DB Source Output" LabelBounds="116.776666666667,40.96,119.92,15.96" />
+    <Link Source="Sort" Target="Derived Column" Bounds="236.696670532227,169.800003051758,0,36.9599914550781" Label="Sort Output" LabelBounds="173.953333333333,184.8,62.7433333333333,15.96" />
+  </Links>
+  <Properties>
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="ComponentClass" DataType="System.String" />
+    <Property Id="GraphDirection" DataType="Microsoft.VisualStudio.Diagrams.Layout.LayoutOrientation" />
+    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="LabelBounds" DataType="System.Windows.Rect" />
+    <Property Id="Layout" DataType="System.String" />
+    <Property Id="ZoomLevel" DataType="System.String" />
+  </Properties>
+</DirectedGraph>
